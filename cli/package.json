@@ -1,0 +1,28 @@
+{
+  "name": "create-dodox-ios",
+  "version": "0.1.0",
+  "description": "Create a SwiftUI iOS app with splash, onboarding, auth, paywall, subscriptions, analytics, notifications, localization and a widget.",
+  "type": "module",
+  "bin": {
+    "create-dodox-ios": "index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "template"
+  ],
+  "scripts": {
+    "build-template": "node scripts/build-template.mjs",
+    "prepack": "node scripts/build-template.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "ios",
+    "swiftui",
+    "xcode",
+    "template",
+    "create"
+  ],
+  "license": "MIT"
+}
