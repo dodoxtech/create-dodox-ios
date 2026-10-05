@@ -1,0 +1,20 @@
+{
+  "extraKnownMarketplaces": {
+    "apple-platform-build-tools": {
+      "source": {
+        "source": "github",
+        "repo": "kylehughes/apple-platform-build-tools-claude-code-plugin"
+      }
+    },
+    "ios-app-design-skills": {
+      "source": {
+        "source": "github",
+        "repo": "dodoxtech/ios-app-design-skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "apple-platform-build-tools@apple-platform-build-tools": true,
+    "ios-app-design-skills@ios-app-design-skills": true
+  }
+}

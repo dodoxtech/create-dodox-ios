@@ -6,3 +6,4 @@ build/
 cli/template/
 cli/node_modules/
 cli/*.tgz
+.claude/settings.local.json

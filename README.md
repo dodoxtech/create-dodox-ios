@@ -43,6 +43,8 @@ Splash ──bootstrap──▶ Onboarding (first launch) ──▶ Auth (signed
 | `Shared/` | Compiled into **both** app and widget: App Group, `SharedStore` / `WidgetSnapshot`, `DeepLink` |
 | `TestWidget/` | Widget extension (small + medium) reading data from the App Group |
 | `Configuration/` | Entitlements and `Products.storekit` (local StoreKit testing, wired into the shared `test` scheme) |
+| `docs/` | Architecture, feature docs, ADRs, setup, AI task workflow and templates — start at [`docs/README.md`](docs/README.md) |
+| `AGENTS.md` / `CLAUDE.md` | Rules and recipes for AI coding agents (`CLAUDE.md` imports `AGENTS.md`) |
 
 ## Adding things
 

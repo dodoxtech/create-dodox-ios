@@ -27,6 +27,10 @@ const TEXT_EXTENSIONS = new Set([
   '.storekit', '.json', '.xcstrings', '.md', '.gitignore',
 ]);
 
+/** Agent guides and docs ship with generated apps, so the bare project name in them is renamed too. */
+const isDoc = (path) =>
+  path === 'README.md' || path === 'CLAUDE.md' || path === 'AGENTS.md' || (path.startsWith('docs/') && path.endsWith('.md'));
+
 const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const word = (s) => new RegExp(`\\b${escapeRegExp(s)}\\b`, 'g');
 
@@ -48,8 +52,13 @@ function tokenize(path, text) {
       .replace(word(SOURCE.name), '__NAME__');
   }
 
-  if (ext === '.xcscheme' || path === 'README.md') {
+  if (ext === '.xcscheme' || isDoc(path)) {
     text = text.replace(word(SOURCE.name), '__NAME__');
+  }
+
+  if (ext === '.md') {
+    // Drop sections that document the generator itself.
+    text = text.replace(/<!-- cli:start -->[\s\S]*?<!-- cli:end -->\n?/g, '');
   }
 
   if (path.endsWith('Localization/Localizable.xcstrings')) {
@@ -61,10 +70,7 @@ function tokenize(path, text) {
   }
 
   if (path === 'README.md') {
-    // Drop the section that documents the generator itself.
-    text = text
-      .replace(/<!-- cli:start -->[\s\S]*?<!-- cli:end -->\n?/g, '')
-      .replace(/^# .*$/m, '# __DISPLAY_NAME__');
+    text = text.replace(/^# .*$/m, '# __DISPLAY_NAME__');
   }
 
   return text;
